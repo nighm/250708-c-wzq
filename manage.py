@@ -137,6 +137,19 @@ def test():
     else:
         print("  ✘ 存在未通过的测试")
 
+def version():
+    import datetime
+    msg = f"auto: 版本迭代 {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    print(f"[版本迭代] {msg}")
+    import subprocess
+    try:
+        subprocess.check_call(["git", "add", "."])
+        subprocess.check_call(["git", "commit", "-m", msg])
+        subprocess.check_call(["git", "push"])
+        print("  ✔ 版本已提交并推送到 GitHub")
+    except subprocess.CalledProcessError:
+        print("  ✘ git 操作失败，请检查 git 配置和网络！")
+
 def help():
     print("""
 用法: python manage.py [命令]
@@ -147,6 +160,7 @@ def help():
   run       运行程序
   clean     清理构建产物
   test      运行单元测试
+  version   版本迭代并上传到 GitHub
   help      显示本帮助
 """)
 
@@ -166,6 +180,8 @@ def main():
         clean()
     elif cmd == "test":
         test()
+    elif cmd == "version":
+        version()
     elif cmd == "help":
         help()
     else:
