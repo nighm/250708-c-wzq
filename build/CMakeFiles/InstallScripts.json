@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/data/trae/250708-c-wzq/build/cmake_install.cmake",
+		"D:/data/trae/250708-c-wzq/build/third_party/googletest-1.14.0/cmake_install.cmake",
+		"D:/data/trae/250708-c-wzq/build/third_party/googletest-1.14.0/googlemock/cmake_install.cmake",
+		"D:/data/trae/250708-c-wzq/build/third_party/googletest-1.14.0/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,1 @@
+  -L"D:/data/trae/250708-c-wzq/third_party/SDL3/lib"  lib/libgtest_main.a "D:/data/trae/250708-c-wzq/third_party/SDL3/lib/libSDL3.dll.a" lib/libgtest.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

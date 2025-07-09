@@ -24,6 +24,3 @@ std::pair<int, int> AI::chooseMove(const Game& game, Player aiPlayer) {
 
 // AI决策逻辑实现
 // TODO: 优化 minimax 算法的剪枝策略以提升性能 <-- 添加此行
-void AI::makeDecision() {
-    // ... 现有代码 ...
-}

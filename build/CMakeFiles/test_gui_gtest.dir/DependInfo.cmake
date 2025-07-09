@@ -1,0 +1,26 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/data/trae/250708-c-wzq/src/ai.cpp" "CMakeFiles/test_gui_gtest.dir/src/ai.cpp.obj" "gcc" "CMakeFiles/test_gui_gtest.dir/src/ai.cpp.obj.d"
+  "D:/data/trae/250708-c-wzq/src/game.cpp" "CMakeFiles/test_gui_gtest.dir/src/game.cpp.obj" "gcc" "CMakeFiles/test_gui_gtest.dir/src/game.cpp.obj.d"
+  "D:/data/trae/250708-c-wzq/src/gui.cpp" "CMakeFiles/test_gui_gtest.dir/src/gui.cpp.obj" "gcc" "CMakeFiles/test_gui_gtest.dir/src/gui.cpp.obj.d"
+  "D:/data/trae/250708-c-wzq/tests/test_gui_gtest.cpp" "CMakeFiles/test_gui_gtest.dir/tests/test_gui_gtest.cpp.obj" "gcc" "CMakeFiles/test_gui_gtest.dir/tests/test_gui_gtest.cpp.obj.d"
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

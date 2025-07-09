@@ -1,6 +1,7 @@
 #include "gui.h"
-#include <SDL.h>
-#include <SDL_ttf.h>
+#include "ai.h"
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_ttf.h>
 #include <string>
 #include <iostream>
 
@@ -15,10 +16,28 @@ struct Gui::Impl {
 Gui::Gui(int width, int height) : impl(new Impl) {
     impl->width = width;
     impl->height = height;
-    SDL_InitVideo();
-    TTF_Init();
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cout << "[错误] SDL_Init 失败: " << SDL_GetError() << std::endl;
+    } else {
+        std::cout << "[调试] SDL_Init 成功" << std::endl;
+    }
+    if (TTF_Init() != 0) {
+        std::cout << "[错误] TTF_Init 失败: " << SDL_GetError() << std::endl;
+    } else {
+        std::cout << "[调试] TTF_Init 成功" << std::endl;
+    }
     impl->window = SDL_CreateWindow("五子棋 Gomoku", width, height, 0);
-    impl->renderer = SDL_CreateRenderer(impl->window, SDL_RENDERER_ACCELERATED);
+    if (!impl->window) {
+        std::cout << "[错误] SDL_CreateWindow 失败: " << SDL_GetError() << std::endl;
+    } else {
+        std::cout << "[调试] SDL_CreateWindow 成功" << std::endl;
+    }
+    impl->renderer = SDL_CreateRenderer(impl->window, 0);
+    if (!impl->renderer) {
+        std::cout << "[错误] SDL_CreateRenderer 失败: " << SDL_GetError() << std::endl;
+    } else {
+        std::cout << "[调试] SDL_CreateRenderer 成功" << std::endl;
+    }
 }
 
 Gui::~Gui() {
@@ -56,8 +75,8 @@ void Gui::run(Game& game, bool vsAI) {
         // 画棋盘
         SDL_SetRenderDrawColor(impl->renderer, 0, 0, 0, 255);
         for (int i = 0; i <= BOARD_SIZE; ++i) {
-            SDL_RenderDrawLine(impl->renderer, cellSize*i, 0, cellSize*i, cellSize*BOARD_SIZE);
-            SDL_RenderDrawLine(impl->renderer, 0, cellSize*i, cellSize*BOARD_SIZE, cellSize*i);
+            SDL_RenderLine(impl->renderer, (float)(cellSize*i), 0.0f, (float)(cellSize*i), (float)(cellSize*BOARD_SIZE));
+            SDL_RenderLine(impl->renderer, 0.0f, (float)(cellSize*i), (float)(cellSize*BOARD_SIZE), (float)(cellSize*i));
         }
         // 画棋子
         for (int i = 0; i < BOARD_SIZE; ++i) {
@@ -65,7 +84,7 @@ void Gui::run(Game& game, bool vsAI) {
                 Player p = game.getCell(i, j);
                 if (p == Player::None) continue;
                 SDL_SetRenderDrawColor(impl->renderer, p == Player::Black ? 0 : 255, p == Player::Black ? 0 : 255, p == Player::Black ? 0 : 255, 255);
-                SDL_Rect rect = {j*cellSize+cellSize/8, i*cellSize+cellSize/8, cellSize*3/4, cellSize*3/4};
+                SDL_FRect rect = {(float)(j*cellSize+cellSize/8), (float)(i*cellSize+cellSize/8), (float)(cellSize*3/4), (float)(cellSize*3/4)};
                 SDL_RenderFillRect(impl->renderer, &rect);
             }
         }
